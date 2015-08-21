@@ -4,7 +4,7 @@
   "main": "src/clappr.js",
   "dependencies": {
     "angular": "~1.2.16",
-    "clappr": "https://github.com/clappr/clappr/blob/master/dist/clappr.min.js"
+    "clappr": "http://cdn.clappr.io/latest/clappr.min.js"
   },
   "keywords": [
     "video",
