@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('clappr')
+angular.module('clappr',[])
   .directive('clappr', function () {
     return {
       restrict: 'E',
