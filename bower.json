@@ -1,0 +1,30 @@
+{
+  "name": "angular-clappr",
+  "version": "0.0.1",
+  "main": "src/clappr.js",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "clappr": "https://github.com/clappr/clappr.git"
+  },
+  "keywords": [
+    "video",
+    "angularjs",
+    "embedded",
+    "directive",
+    "youtube",
+    "vimeo"
+  ],
+  "homepage": "https://github.com/Defina-se/angular-clappr",
+  "authors": [
+    "Jayr Motta"
+  ],
+  "description": "Uma diretiva capaz de receber uma URL de um arquivo de video e utilizar o player clappr originalmente criado pela Globo.com",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

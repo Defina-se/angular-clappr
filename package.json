@@ -1,0 +1,29 @@
+{
+  "name": "angular-clappr",
+  "version": "1.0.0",
+  "dependencies": {
+    "clappr": "https://github.com/clappr/clappr.git"
+  },
+  "description": "Uma diretiva capaz de receber uma URL de um arquivo de video e utilizar o player clappr originalmente criado pela Globo.com",
+  "main": "src/clappr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Defina-se/angular-clappr.git"
+  },
+  "keywords": [
+    "video",
+    "ng-clappr",
+    "clappr",
+    "player",
+    "mp4"
+  ],
+  "author": "Jayr Motta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/washingtonsoares/ng-clappr/issues"
+  },
+  "homepage": "https://github.com/washingtonsoares/ng-clappr#readme"
+}
