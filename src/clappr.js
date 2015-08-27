@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clappr',[])
-.directive('clappr', function ($rootScope) {
+.directive('clappr', function () {
   return {
     restrict: 'E',
     scope: {
@@ -26,7 +26,7 @@ angular.module('clappr',[])
         });
 
         angular.element('video')[0].onended = function() {
-            $rootScope.$broadcast("clappr:finishVideo");
+            scope.$emit("clappr:finishVideo");
         };
 
         scope.$$watchers = [];
