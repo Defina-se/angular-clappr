@@ -22,7 +22,8 @@ angular.module('clappr',[])
           parentId: "#player",
           autoPlay: true,
           watermark: locationImage,
-          width: "100%"
+          width: "100%",
+          height: "456px"
         });
 
         angular.element('video')[0].onended = function() {
