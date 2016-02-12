@@ -20,7 +20,7 @@ angular.module('clappr',[])
         new Clappr.Player({
           source: scope.src,
           parentId: "#player",
-          autoPlay: true,
+          autoPlay: false,
           watermark: locationImage,
           width: "100%",
           height: "456px"
