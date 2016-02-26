@@ -7,7 +7,9 @@ angular.module('clappr',[])
     scope: {
       'src' : '='
     },
-    template: '<div class="embed-responsive embed-responsive-16by10"><div id="player" class="embed-responsive-item"></div></div>',
+    template: '<div class="embed-responsive embed-responsive-16by9">'+
+                  '<div id="player" class="embed-responsive-item"></div>'+
+              '</div>',
     link: function(scope, element, attrs) {
       scope.$watch('src', function(newValue, oldValue) {
         if (!newValue)
