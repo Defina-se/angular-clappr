@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clappr',[])
-.directive('clappr', function () {
+.directive('clappr', function ($interval) {
   return {
     restrict: 'E',
     scope: {
@@ -33,14 +33,62 @@ angular.module('clappr',[])
           autoPlay: false,
           watermark: locationImage,
           width: "100%",
-          height: "100%" // 456px"
+          height: "100%"
         });
 
-        angular.element('video')[0].onended = function() {
+        scope.timer, scope.timeSpent = [];
+
+        var player = angular.element('video')[0];
+
+        player.addEventListener("playing",onPlayerStateChange,true);
+        player.addEventListener("pause",function(){
+          $interval.cancel(scope.timer);
+        },true);
+
+        function onPlayerStateChange() {
+            if(!scope.timeSpent.length){
+                for(var i=0, l=parseInt(player.duration); i<l; i++) scope.timeSpent.push(false);
+            }
+
+            scope.timer = $interval(record,100);
+        }
+
+        function record(){
+          scope.timeSpent[ parseInt(player.currentTime)] = true;
+          showPercentage();
+        }
+
+        function showPercentage(){
+            var percent = 0;
+            for(var i=0, l=scope.timeSpent.length; i<l; i++){
+                if(scope.timeSpent[i]) percent++;
+            }
+            percent = Math.round(percent / scope.timeSpent.length * 100);
+            //console.log(percent + "%");
+            if(percent >= 70){
+              broadcastWatchedMinPercentage();
+              $interval.cancel(scope.timer);
+            }
+        }
+
+        function broadcastWatchedMinPercentage(){
+          if(!scope.watchedMinPercentage){
+            scope.$emit("clappr:watchedMinPercentage");
+            scope.watchedMinPercentage = true;
+          }
+        }
+
+        player.onended = function() {
             scope.$emit("clappr:finishVideo");
         };
 
         scope.$$watchers = [];
+        scope.$on("$destroy",function(){
+          $interval.cancel(scope.timer);
+        });
+        element.on("$destroy",function() {
+          $interval.cancel(scope.timer);
+        })
       });
     }
   };
