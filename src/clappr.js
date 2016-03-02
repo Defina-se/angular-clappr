@@ -17,7 +17,9 @@ angular.module('clappr',[])
 
         angular.element('#player').children().remove();
 
-        var locationImage = "http://" + window.location.host + window.location.pathname + "images/logo_watermark.png";
+        var locationBase = "http://" + window.location.host + window.location.pathname
+        var locationWaterMark = locationBase + "images/logo_watermark.png";
+        var locationPoster = locationBase + "images/black.png";
 
         $("#player").resizable({
           aspectRatio: 16/9,
@@ -31,8 +33,9 @@ angular.module('clappr',[])
           source: scope.src,
           parentId: "#player",
           autoPlay: false,
-          watermark: locationImage,
+          watermark: locationWaterMark,
           width: "100%",
+          poster: locationPoster,
           height: "100%"
         });
 
@@ -65,7 +68,7 @@ angular.module('clappr',[])
             }
             percent = Math.round(percent / scope.timeSpent.length * 100);
             //console.log(percent + "%");
-            if(percent >= 70){
+            if(percent >= 10){
               broadcastWatchedMinPercentage();
               $interval.cancel(scope.timer);
             }
