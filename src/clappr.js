@@ -68,7 +68,7 @@ angular.module('clappr',[])
             }
             percent = Math.round(percent / scope.timeSpent.length * 100);
             //console.log(percent + "%");
-            if(percent >= 10){
+            if(percent >= 70){
               broadcastWatchedMinPercentage();
               $interval.cancel(scope.timer);
             }
