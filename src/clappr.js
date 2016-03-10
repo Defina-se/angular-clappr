@@ -43,17 +43,21 @@ angular.module('clappr',[])
 
         var player = angular.element('video')[0];
 
-        player.addEventListener("playing",onPlayerStateChange,true);
+        player.addEventListener("playing", onPlayerStateChange, true);
         player.addEventListener("pause",function(){
           $interval.cancel(scope.timer);
         },true);
 
         function onPlayerStateChange() {
+          if( player.duration > 0){
             if(!scope.timeSpent.length){
                 for(var i=0, l=parseInt(player.duration); i<l; i++) scope.timeSpent.push(false);
             }
-
-            scope.timer = $interval(record,100);
+            scope.timer = $interval(record, 100);
+          }
+          else {
+            player.addEventListener("durationchange", onPlayerStateChange, true);
+          }
         }
 
         function record(){
@@ -67,7 +71,7 @@ angular.module('clappr',[])
                 if(scope.timeSpent[i]) percent++;
             }
             percent = Math.round(percent / scope.timeSpent.length * 100);
-            //console.log(percent + "%");
+            //console.log(percent);
             if(percent >= 70){
               broadcastWatchedMinPercentage();
               $interval.cancel(scope.timer);
