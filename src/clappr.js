@@ -33,7 +33,6 @@ angular.module('clappr',[])
           source: scope.src,
           parentId: "#player",
           autoPlay: false,
-          watermark: locationWaterMark,
           width: "100%",
           poster: locationPoster,
           height: "100%"
