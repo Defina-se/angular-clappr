@@ -47,6 +47,14 @@ angular.module('clappr',[])
           $interval.cancel(scope.timer);
         },true);
 
+        scope.$on("pause",function(){
+          player.pause();
+         });
+
+         scope.$on("play",function(){
+           player.play();
+          });
+
         function onPlayerStateChange() {
           if( player.duration > 0){
             if(!scope.timeSpent.length){
