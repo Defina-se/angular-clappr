@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clappr',[])
-.directive('clappr', function ($interval) {
+.directive('clappr', ['$interval', function ($interval) {
   return {
     restrict: 'E',
     scope: {
@@ -106,4 +106,4 @@ angular.module('clappr',[])
       });
     }
   };
-});
+}]);
